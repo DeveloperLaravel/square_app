@@ -28,7 +28,6 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
-double width = 100;
 
   @override
   Widget build(BuildContext context) {
@@ -37,33 +36,32 @@ double width = 100;
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text('تعليم الفلاثر'),
       ),
-      body:  Row(
+      body:  ListView(
         children: [
 
 
-SizedBox(width:20),
 
-            Container(
-              width: width,
-              height: 100,
-                color: Colors.black,
-              ),
+           Container(
+                width: 200,
+                height: 200,
+                  color: Colors.green,
+                  child: Text('Elmsry'),
+                ),
 
+                Container(
+                    width: 150,
+                    height: 150,
+                      color: Colors.amber,
+                      child: Text('Essa'),
+                    ),
 
-SizedBox(width: 20,),
-
-            Container(
-              width: width,
-              height: 100,
-                color: Colors.amber,
-              ),
-
-SizedBox(width: 20,),
-          Container(
-              width: width,
-              height: 100,
-                color: Colors.blue,
-              ),
+      
+               Container(
+                  width: 100,
+                  height: 100,
+                    color: Colors.blue,
+                    child: Text('Abbes'),
+                  ),
 
 
         ],
