@@ -1,6 +1,21 @@
 import 'package:flutter/material.dart';
 
+
+List<int> numbers = [1,2,3,4];
+
+
+
+final result = numbers.map((b)=> b * 2);
+
+
+
 void main() {
+
+
+print(result);
+
+
+
   runApp(const MyApp());
 }
 
@@ -36,10 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text('تعليم الفلاثر'),
       ),
-      body:  ListView(
-        children: [
-
-
+      body:  
 
            Container(
                 width: 200,
@@ -47,25 +59,11 @@ class _MyHomePageState extends State<MyHomePage> {
                   color: Colors.green,
                   child: Text('Elmsry'),
                 ),
-
-                Container(
-                    width: 150,
-                    height: 150,
-                      color: Colors.amber,
-                      child: Text('Essa'),
-                    ),
+      
+              
 
       
-               Container(
-                  width: 100,
-                  height: 100,
-                    color: Colors.blue,
-                    child: Text('Abbes'),
-                  ),
-
-
-        ],
-      ),
+    
     );
   }
 }
