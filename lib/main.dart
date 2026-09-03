@@ -1,69 +1,55 @@
 import 'package:flutter/material.dart';
 
+import 'core/router/app_router.dart';
+import 'core/theme/app_theme.dart';
+import 'core/theme/theme_manager.dart';
 
-List<int> numbers = [1,2,3,4];
-
-
-
-final result = numbers.map((b)=> b * 2);
-
-
-
-void main() {
-
-
-print(result);
-
-
-
+void main()  {
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: .fromSeed(seedColor: Colors.deepPurple),
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text('تعليم الفلاثر'),
-      ),
-      body:  
+    return ValueListenableBuilder<ThemeMode>(
+      valueListenable:
+          ThemeManager.instance.themeModeNotifier,
 
-           Container(
-                width: 200,
-                height: 200,
-                  color: Colors.green,
-                  child: Text('Elmsry'),
-                ),
-      
-              
+      builder: (
+        context,
+        themeMode,
+        child,
+      ) {
+        return ValueListenableBuilder<Color>(
+          valueListenable:
+              ThemeManager.instance.colorNotifier,
 
-      
-    
+          builder: (
+            context,
+            primaryColor,
+            child,
+          ) {
+            return MaterialApp.router(
+
+              title: 'Page Transitions',
+
+              theme: AppTheme.light(
+                primaryColor,
+              ),
+
+              darkTheme: AppTheme.dark(
+                primaryColor,
+              ),
+
+              themeMode: themeMode,
+
+              routerConfig: appRouter,
+            );
+          },
+        );
+      },
     );
   }
 }
