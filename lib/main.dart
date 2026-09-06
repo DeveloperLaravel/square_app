@@ -4,50 +4,59 @@ import 'core/router/app_router.dart';
 import 'core/theme/app_theme.dart';
 import 'core/theme/theme_manager.dart';
 
-void main()  {
-  runApp(const MyApp());
+void main() {
+  runApp(
+    const MyApp(),
+  );
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({
+    super.key,
+  });
 
   @override
-  Widget build(BuildContext context) {
-    return ValueListenableBuilder<ThemeMode>(
-      valueListenable:
-          ThemeManager.instance.themeModeNotifier,
+  Widget build(
+    BuildContext context,
+  ) {
+    return ListenableBuilder(
+      listenable: Listenable.merge([
+        ThemeManager.instance
+            .themeModeNotifier,
+
+        ThemeManager.instance
+            .colorNotifier,
+      ]),
 
       builder: (
         context,
-        themeMode,
         child,
       ) {
-        return ValueListenableBuilder<Color>(
-          valueListenable:
-              ThemeManager.instance.colorNotifier,
+        final manager =
+            ThemeManager.instance;
 
-          builder: (
-            context,
-            primaryColor,
-            child,
-          ) {
-            return MaterialApp.router(
+        return MaterialApp.router(
+          debugShowCheckedModeBanner:
+              false,
 
-              title: 'Page Transitions',
+          title:
+              'My App',
 
-              theme: AppTheme.light(
-                primaryColor,
-              ),
+          theme:
+              AppTheme.light(
+            manager.primaryColor,
+          ),
 
-              darkTheme: AppTheme.dark(
-                primaryColor,
-              ),
+          darkTheme:
+              AppTheme.dark(
+            manager.primaryColor,
+          ),
 
-              themeMode: themeMode,
+          themeMode:
+              manager.themeMode,
 
-              routerConfig: appRouter,
-            );
-          },
+          routerConfig:
+              appRouter,
         );
       },
     );

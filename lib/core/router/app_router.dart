@@ -2,7 +2,11 @@ import 'package:go_router/go_router.dart';
 
 
 import '../../features/presntaion/home/home_page.dart';
-import '../../features/presntaion/products/products_page.dart';
+import '../../features/presntaion/products/add_product_page.dart';
+import '../../features/presntaion/products/domain/product_entity.dart';
+import '../../features/presntaion/products/edit_product_screen.dart';
+import '../../features/presntaion/products/product_details_screen.dart';
+import '../../features/presntaion/products/search_screen.dart';
 import '../../features/presntaion/profile/profile_page.dart';
 import '../../features/presntaion/settings/settings_page.dart';
 import 'app_routes.dart';
@@ -41,11 +45,43 @@ final GoRouter appRouter = GoRouter(
       ) {
         return PageTransitions.build(
           state: state,
-          child: const ProductsPage(),
+          child: const ProductsScreen(),
+        );
+      },
+    ),
+    GoRoute(
+      path: AppRoutes.productDetails,
+
+      pageBuilder: (
+        context,
+        state,
+      ) {
+          final product = state.extra as ProductEntity;
+        return PageTransitions.build(
+          state: state,
+          child:  ProductDetailsScreen(
+               product: product,
+    ),
         );
       },
     ),
 
+     GoRoute(
+      path: AppRoutes.editProduct,
+
+      pageBuilder: (
+        context,
+        state,
+      ) {
+          final product = state.extra as ProductEntity;
+        return PageTransitions.build(
+          state: state,
+          child:  EditProductScreen(
+               product: product,
+    ),
+        );
+      },
+    ),
     // ================================================
     // Settings
     // ================================================
@@ -85,7 +121,19 @@ final GoRouter appRouter = GoRouter(
     // ================================================
     // Transition Settings
     // ================================================
+    GoRoute(
+      path: AppRoutes.addProduct,
 
+      pageBuilder: (
+        context,
+        state,
+      ) {
+        return PageTransitions.build(
+          state: state,
+          child: const AddProductPage(),
+        );
+      },
+    ),
    
   ],
 );
