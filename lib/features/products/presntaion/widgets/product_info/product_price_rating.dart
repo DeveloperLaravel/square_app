@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../../../domain/product_entity.dart';
+import '../../../domain/product.dart';
 
 class ProductPriceRating extends StatelessWidget {
-  final ProductEntity product;
+  final Product product;
 
   const ProductPriceRating({
     super.key,

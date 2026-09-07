@@ -5,6 +5,7 @@ import 'product_info/product_description.dart';
 import 'product_info/product_price_rating.dart';
 import 'product_info/product_title.dart';
 
+
 class ProductInfo extends StatelessWidget {
   final ProductEntity product;
 
@@ -17,8 +18,11 @@ class ProductInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
+
       children: [
-        ProductTitle(title: product.title),
+        ProductTitle(
+          title: product.title,
+        ),
 
         const SizedBox(height: 4),
 
@@ -28,7 +32,9 @@ class ProductInfo extends StatelessWidget {
 
         const SizedBox(height: 8),
 
-        ProductPriceRating(product: product),
+        ProductPriceRating(
+          product: product,
+        ),
       ],
     );
   }

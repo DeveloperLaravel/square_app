@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../../domain/product_entity.dart';
-import 'product_badges.dart';
-import 'product_image.dart';
-import 'product_info.dart';
+import '../../../domain/product_entity.dart';
+import '../product_badges.dart';
+import '../product_image.dart';
+import '../product_info.dart';
 
 class ProductCard extends StatelessWidget {
   final ProductEntity product;
@@ -23,36 +23,51 @@ class ProductCard extends StatelessWidget {
     return InkWell(
       onTap: onPress,
       borderRadius: BorderRadius.circular(16),
+
       child: Container(
         decoration: BoxDecoration(
-          color: colors.surface,  
+          color: colors.surface,
+
           borderRadius: BorderRadius.circular(16),
+
           border: Border.all(
             color: colors.outlineVariant,
           ),
+
           boxShadow: [
             BoxShadow(
-              color: colors.shadow.withOpacity(.08),
+              color: colors.shadow.withValues(
+                alpha: 0.08,
+              ),
               blurRadius: 8,
               offset: const Offset(0, 3),
             ),
           ],
         ),
+
         padding: const EdgeInsets.all(12),
+
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+
           children: [
             Expanded(
-              child: ProductImage(product: product),
+              child: ProductImage(
+                product: product,
+              ),
             ),
 
             const SizedBox(height: 10),
 
-            ProductInfo(product: product),
+            ProductInfo(
+              product: product,
+            ),
 
             const SizedBox(height: 6),
 
-            ProductBadges(product: product),
+            ProductBadges(
+              product: product,
+            ),
           ],
         ),
       ),

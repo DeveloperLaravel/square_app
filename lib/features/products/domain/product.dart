@@ -3,7 +3,7 @@
 
 import 'dart:ui';
 
-class ProductEntity {
+class Product {
   final int id;
 
   final String title;
@@ -21,7 +21,7 @@ class ProductEntity {
   final bool isFavourite;
   final bool isPopular;
 
-  const ProductEntity({
+  const Product({
     required this.id,
     required this.images,
     required this.colors,

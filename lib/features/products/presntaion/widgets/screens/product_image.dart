@@ -2,10 +2,10 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 
-import '../../domain/product_entity.dart';
+import '../../../domain/product.dart';
 
 class ProductImage extends StatelessWidget {
-  final ProductEntity product;
+  final Product product;
 
   const ProductImage({
     super.key,

@@ -75,9 +75,9 @@ class HomePage extends StatelessWidget {
           // ==================================================
 
           _HomeCard(
-            title: 'المنتجات',
+            title: 'المنتجات مع مودل عادي',
             subtitle:
-                'عرض وإدارة المنتجات',
+                ' عرض وإدارة المنتجات بطريقة عادية',
             icon: Icons.shopping_bag_outlined,
             color: primary,
 
@@ -95,15 +95,15 @@ class HomePage extends StatelessWidget {
           // ==================================================
 
           _HomeCard(
-            title: 'الملف الشخصي',
+            title: 'المنتجات مع مودل  freeze',
             subtitle:
-                'عرض معلومات الحساب',
-            icon: Icons.person_outline,
+                'عرض و ادارة المنتجات مع  freeze',
+            icon: Icons.shopping_bag,
             color: Colors.green,
 
             onTap: () {
               context.push(
-                AppRoutes.profile,
+                AppRoutes.productsFreeze,
               );
             },
           ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../domain/product_entity.dart';
 
+
 class ProductBadges extends StatelessWidget {
   final ProductEntity product;
 

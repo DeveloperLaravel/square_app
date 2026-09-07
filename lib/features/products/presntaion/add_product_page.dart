@@ -5,17 +5,17 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
 
-import 'domain/product_entity.dart';
+import '../domain/product.dart';
 
 
-class AddProductPage extends StatefulWidget {
-  const AddProductPage({super.key});
+class AddProduct extends StatefulWidget {
+  const AddProduct({super.key});
 
   @override
-  State<AddProductPage> createState() => _AddProductPageState();
+  State<AddProduct> createState() => _AddProductState();
 }
 
-class _AddProductPageState extends State<AddProductPage> {
+class _AddProductState extends State<AddProduct> {
   // =========================================================
   // Form
   // =========================================================
@@ -113,7 +113,7 @@ class _AddProductPageState extends State<AddProductPage> {
       return;
     }
 
-    final product = ProductEntity(
+    final product = Product(
       id: DateTime.now().millisecondsSinceEpoch,
 
       title: _titleController.text.trim(),

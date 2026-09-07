@@ -3,11 +3,11 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:square_app/features/products/domain/product.dart';
 
-import 'domain/product_entity.dart';
 
 class EditProductScreen extends StatefulWidget {
-  final ProductEntity product;
+  final Product product;
 
   const EditProductScreen(
   {required  this.product, super.key
@@ -118,7 +118,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
       return;
     }
 
-    final updatedProduct = ProductEntity(
+    final updatedProduct = Product(
       id: widget.product.id,
 
       title: title,

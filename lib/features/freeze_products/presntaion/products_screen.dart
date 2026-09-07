@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:square_app/core/router/app_routes.dart';
 
-import 'domain/product_entity.dart';
+import '../domain/product_entity.dart';
 import 'widgets/screens/product_card.dart';
 
 class ProductsScreen extends StatefulWidget {
@@ -13,6 +13,11 @@ class ProductsScreen extends StatefulWidget {
 }
 
 class _ProductsScreenState extends State<ProductsScreen> {
+
+  // =========================================================
+  // Products
+  // =========================================================
+
   final List<ProductEntity> products = [];
 
   // =========================================================
@@ -51,6 +56,8 @@ class _ProductsScreenState extends State<ProductsScreen> {
       extra: product,
     );
 
+    if (!mounted) return;
+
     // إذا تم تعديل المنتج
     if (updatedProduct != null) {
       updateProduct(updatedProduct);
@@ -63,8 +70,10 @@ class _ProductsScreenState extends State<ProductsScreen> {
 
   Future<void> openAddProduct() async {
     final product = await context.push<ProductEntity>(
-      AppRoutes.addProduct,
+      AppRoutes.addProductFreeze,
     );
+
+    if (!mounted) return;
 
     if (product != null) {
       addProduct(product);
@@ -77,15 +86,17 @@ class _ProductsScreenState extends State<ProductsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
+
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: colors.surface,
 
       // =====================================================
       // AppBar
       // =====================================================
 
       appBar: AppBar(
-        title: const Text('Products'),
+        title: const Text('Products Freeze'),
 
         actions: [
           IconButton(
@@ -102,9 +113,16 @@ class _ProductsScreenState extends State<ProductsScreen> {
 
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(
+            horizontal: 16,
+          ),
 
           child: products.isEmpty
+
+              // =================================================
+              // Empty
+              // =================================================
+
               ? const Center(
                   child: Text(
                     'No Products',
@@ -113,7 +131,16 @@ class _ProductsScreenState extends State<ProductsScreen> {
                     ),
                   ),
                 )
+
+              // =================================================
+              // Products
+              // =================================================
+
               : GridView.builder(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 16,
+                  ),
+
                   itemCount: products.length,
 
                   gridDelegate:
@@ -130,7 +157,6 @@ class _ProductsScreenState extends State<ProductsScreen> {
                     return ProductCard(
                       product: product,
 
-                      // مهم جداً
                       onPress: () {
                         openProduct(product);
                       },

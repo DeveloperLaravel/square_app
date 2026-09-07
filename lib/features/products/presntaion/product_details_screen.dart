@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:square_app/core/router/app_routes.dart';
 
-import 'domain/product_entity.dart';
+import '../domain/product.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
-  final ProductEntity product;
+  final Product product;
 
   const ProductDetailsScreen({
     super.key,
@@ -17,7 +17,7 @@ class ProductDetailsScreen extends StatelessWidget {
   // =========================================================
 
   Future<void> editProduct(BuildContext context) async {
-    final updatedProduct = await context.push<ProductEntity>(
+    final updatedProduct = await context.push<Product>(
       AppRoutes.editProduct,
       extra: product,
     );
