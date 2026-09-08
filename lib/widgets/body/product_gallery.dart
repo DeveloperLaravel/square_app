@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../domain/models/product.dart';
+import 'small_product_image.dart';
 
 class ProductGallery extends StatefulWidget {
   final Product product;
@@ -47,36 +48,10 @@ class _ProductGalleryState extends State<ProductGallery> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: List.generate(
             images.length,
-            (index) {
-              return GestureDetector(
-                onTap: () {
-                  setState(() {
-                    selectedImage = index;
-                  });
-                },
-                child: Container(
-                  margin: const EdgeInsets.only(right: 10),
-                  width: 60,
-                  height: 60,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(
-                      color: selectedImage == index
-                          ? Colors.blue
-                          : Colors.transparent,
-                      width: 2,
-                    ),
-                  ),
-                  child: Image.asset(
-                    images[index],
-                    fit: BoxFit.contain,
-                  ),
-                ),
-              );
-            },
-          ),
-        )
+            (index) => SmallProductImage( image: images[index], isSelected: index == selectedImage, press: () { setState(() => selectedImage = index); }, ),
+               
+              ),
+        ),
       
       ],
     );
