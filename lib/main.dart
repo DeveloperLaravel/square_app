@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'products_screen.dart';
+
 
 List<int> numbers = [1,2,3,4];
 
@@ -24,6 +26,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
@@ -47,23 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text('تعليم الفلاثر'),
-      ),
-      body:  
-
-           Container(
-                width: 200,
-                height: 200,
-                  color: Colors.green,
-                  child: Text('Elmsry'),
-                ),
-      
-              
-
-      
-    
-    );
+ 
+      body:  ProductsScreen());
   }
 }
