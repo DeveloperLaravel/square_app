@@ -1,20 +1,9 @@
 import 'package:flutter/material.dart';
 
-
-List<int> numbers = [1,2,3,4];
-
-
-
-final result = numbers.map((b)=> b * 2);
-
+import 'widgets/home_screen.dart';
 
 
 void main() {
-
-
-print(result);
-
-
 
   runApp(const MyApp());
 }
@@ -24,18 +13,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-  final String title;
+  const MyHomePage({super.key,});
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -47,23 +35,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text('تعليم الفلاثر'),
-      ),
-      body:  
-
-           Container(
-                width: 200,
-                height: 200,
-                  color: Colors.green,
-                  child: Text('Elmsry'),
-                ),
-      
-              
-
-      
-    
+      body:  HomeScreen(),
     );
   }
 }
