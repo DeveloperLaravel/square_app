@@ -20,7 +20,7 @@ class ColorDot extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.transparent,
         border: Border.all(
-            color: isSelected ? const Color(0xFFFF7643) : Colors.transparent),
+            color: isSelected ?  color : Colors.transparent),
         shape: BoxShape.circle,
       ),
       child: DecoratedBox(

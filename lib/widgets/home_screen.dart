@@ -9,9 +9,15 @@ import 'body/image/body_image.dart';
 
 
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+   Color selectedColor = Colors.white;
   @override
   Widget build(BuildContext context) {
     final product = demoProducts[0];
@@ -25,7 +31,7 @@ class HomeScreen extends StatelessWidget {
           BodyImage(product: product),
 
          TopRoundedContainer(
-          color: Colors.white,
+          color: selectedColor.withOpacity(0.15),
            child: Column(
             children: [
                ProductDescription(
@@ -33,10 +39,16 @@ class HomeScreen extends StatelessWidget {
                   pressOnSeeMore: () {},
                 ),
                 TopRoundedContainer(
-                  color: const Color(0xFFF6F7F9),
+                  color: selectedColor.withOpacity(0.75),
                   child: Column(
                     children: [
-                      ColorDots(product: product),
+                      ColorDots(product: product, 
+                      onColorChanged: (color) { 
+                        setState(() {
+                      selectedColor = color;
+                          });
+                       },
+                       ),
                     ],
                   ),
                 ),
