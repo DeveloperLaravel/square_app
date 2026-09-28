@@ -25,6 +25,7 @@ class SmallImage extends StatelessWidget {
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
         border: Border.all(
+          // ignore: deprecated_member_use
           color:  const Color(0xFFFF7643).withOpacity(isSelected ? 1 : 0 )
         )
       ),
