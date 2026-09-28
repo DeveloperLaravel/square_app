@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'widgets/body/counter_text.dart';
-import 'widgets/body/discount_banner.dart';
+import 'widgets/body/dot_indicator.dart';
 import 'widgets/body/home_header.dart';
 
 
@@ -188,6 +188,7 @@ List <String> cells  = [
   '',
   '',
 ];
+ int currentPage = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -204,8 +205,13 @@ List <String> cells  = [
                 children: [
             
                   HomeHeader(),
-                  DiscountBanner(title: time.toString(), xScore: xScore, oScore: oScore
-,),
+                  //  DiscountBanner(),
+                  // Padding(
+                    // padding: const EdgeInsets.only(left: 40),
+                    
+                    // child: DiscountBanner(title: time.toString(), xScore: xScore, oScore: oScore
+                    // ,),
+                  // ),
                   // Categories(),
                   // SpecialOffers(),
 
@@ -233,9 +239,11 @@ SizedBox(
 
 
 
+Row(
+  children: List.generate(demoData.length, (index)=> DotIndicator(isActive: index == currentPage)),
+)
 
-
-          ],
+          ],  
         ),
       ),
 
@@ -245,15 +253,28 @@ SizedBox(
           //   product: product,
   }
 }
-
- List<String> buttons = [
-  'C',
-  '+/-',
-   '%',
-    'DEL',
-    '7',
-    '8',
+// Demo data for our Onboarding screen
+List<Map<String, dynamic>> demoData = [
+  {
+    "illustration": "https://i.postimg.cc/L43CKddq/Illustrations.png",
+    "title": "All your favorites",
+    "text":
+        "Order from the best local restaurants \nwith easy, on-demand delivery.",
+  },
+  {
+    "illustration": "https://i.postimg.cc/xTjs9sY6/Illustrations-1.png",
+    "title": "Free delivery offers",
+    "text":
+        "Free delivery for new customers via Apple Pay\nand others payment methods.",
+  },
+  {
+    "illustration": "https://i.postimg.cc/6qcYdZVV/Illustrations-2.png",
+    "title": "Choose your food",
+    "text":
+        "Easily find your type of food craving and\nyou’ll get delivery in wide range.",
+  },
 ];
+
 
 // List<Product> demoProducts = [
 //   Product(
